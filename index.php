@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+<?php 
+
+require ('funcoes.php');
+
+$contadores = buscarContadores();
+
+/*foreach ($contadores as $c ) 
+{
+	echo '<p>' . $c['nome'] . '</p>';
+}*/
+
+
+
+
+
+ ?>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8"> 
@@ -12,34 +28,26 @@
 	<header>
 		<h1>Contador de Coisas</h1>
 	</header>
+	
+	<div id="listadecontadores">
 
-   	<div id="listadecontadores">
-		<div class="contador">
-			<button>-</button>
-			<div class="contt">
-				<span>Xixi</span>
-				<p>4</p>
-			</div>
-			<button>+</button>
-		</div>
+		<?php foreach ($contadores as $c): ?>
+	
 
-		<div class="contador">
-			<button>-</button>
-			<div class="contt">
-				<span>Copos d'água</span>
-				<p>4</p>
+	   	
+			<div class="contador">
+				<button>-</button>
+				<div class="contt">
+					<p><?= $c['nome'] ?></p>
+					<p><?= $c['numero'] ?></p>
+				</div>
+				<button>+</button>
 			</div>
-			<button>+</button>
-		</div>
 
-		<div class="contador">
-			<button>-</button>
-			<div class="contt">
-				<span>Biscoitos</span>
-				<p>4</p>
-			</div>
-			<button>+</button>
-		</div>
+		<?php endforeach; ?>
+
+
+		
 	</div>
 	<footer>
 		<form action="index.php" method="post">
