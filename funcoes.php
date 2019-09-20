@@ -19,10 +19,20 @@ function buscarContadores()
 	return $comando->fetchAll();
 }
 
+
 function criarContador($nome)
 {
-
+	$conexao = criarConexao();
+	$sql = "INSERT INTO contador values (null, ?, 0)";
+	$comando = $conexao->prepare($sql);
+	return $comando->execute(
+		[
+			$nome
+		]
+	);
 }
+
+
 
 function incrementarContador($id)
 {
