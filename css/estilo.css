@@ -30,3 +30,20 @@ footer{
 	bottom: 5px;
 	margin-left: 3px;
 }
+
+html{
+	font-family: 'Open Sans', sans-serif;
+
+}
+#listadecontadores button{
+	border-color: #836FFF;
+	border-radius: 9px;
+	background-color: white;
+	color: #836FFF;
+}
+
+#add button{
+	background-color: #836FFF;
+	border-radius: 9px;
+	color: white;
+}

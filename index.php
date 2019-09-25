@@ -2,15 +2,35 @@
 
 require ('funcoes.php');
 
-$contadores = buscarContadores();
 
 if( $_POST['acao'] == "adicionar")
 {
    criarContador($_POST['campo1']);
  
      
- }
-   $contadores = buscarContadores();
+}
+
+else if( $_POST['acao'] == "mais")
+{
+   incrementarContador($_POST['codigo']);
+     
+}
+
+else if( $_POST['acao'] == "menos")
+{
+   decrementarContador($_POST['codigo']);
+     
+}
+
+else if( $_POST['acao'] == "deletar")
+{
+   deletar($_POST['codigo']);
+     
+}
+
+
+$contadores = buscarContadores();
+
 
 
 
@@ -30,7 +50,10 @@ if( $_POST['acao'] == "adicionar")
 	<meta charset="UTF-8"> 
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>Contador</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+
+
 </head>
 
 <body>
@@ -46,12 +69,14 @@ if( $_POST['acao'] == "adicionar")
 
 	   	
 			<form action="index.php" method="post" class="contador">
-				<button name="acao" value="menos">-</button>
+				<button name="acao" value="menos">⊖</button>
+				<input type="hidden" name="codigo" value="<?= $c['codigo'] ?>">
 				<div class="contt">
 					<p><?= $c['nome'] ?></p>
 					<p><?= $c['numero'] ?></p>
 				</div>
-				<button name="acao" value="mais">+</button>
+				<button name="acao" value="mais">⨁</button>
+				<button name="acao" value="deletar"><img src="Imagem/lixo.png"></button>
 			</form>
 
 		<?php endforeach; ?>
@@ -60,12 +85,16 @@ if( $_POST['acao'] == "adicionar")
 		
 	</div>
 	<footer>
+	<div id="add">
 		<form action="index.php" method="post">
 		<label>Novo Contador</label> 
 		<input type="text" name="campo1">
 		<button name="acao" value="adicionar">Adicionar</button>
 		</form>
+	</div>
 	</footer>
+
+
 </div>
 
 

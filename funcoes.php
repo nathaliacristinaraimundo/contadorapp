@@ -36,11 +36,40 @@ function criarContador($nome)
 
 function incrementarContador($id)
 {
+	$conexao = criarConexao();
+	$sql = "UPDATE contador SET numero = (numero+1) where codigo = ?";
+	$comando = $conexao->prepare($sql);
+	return $comando->execute(
+		[
+			$id
+		]
+	);
 
 }
 
 function decrementarContador($id)
 {
+	$conexao = criarConexao();
+	$sql = "UPDATE contador SET numero = (numero-1) where codigo = ?";
+	$comando = $conexao->prepare($sql);
+	return $comando->execute(
+		[
+			$id
+		]
+	);
 
 }
+
+function deletar($codigo)
+{
+	$conexao = criarConexao();
+	$sql = "DELETE FROM  contador where codigo = ?";
+	$comando = $conexao->prepare($sql);
+	return $comando->execute(
+		[
+			$codigo
+		]
+	);
+}
+
 ?>
